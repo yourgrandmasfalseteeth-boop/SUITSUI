@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Map, Compass, Radio, Wrench, Activity, MessageSquare, Info, ChevronRight, Bot } from 'lucide-react';
+const { useState } = React;
 
 const SIRIUSSystem = () => {
   const [currentPage, setCurrentPage] = useState('navigation');
@@ -739,4 +738,7 @@ const SIRIUSSystem = () => {
   );
 };
 
-export default SIRIUSSystem;
+ReactDOM.render(
+  React.createElement(SIRIUSSystem),
+  document.getElementById('root')
+);
