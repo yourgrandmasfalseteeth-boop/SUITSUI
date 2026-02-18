@@ -1,5 +1,5 @@
 const { useState } = React;
-
+const { Map, Compass, Radio, Wrench, Activity, MessageSquare, Info, ChevronRight, Bot } = lucide;
 const SIRIUSSystem = () => {
   const [currentPage, setCurrentPage] = useState('navigation');
 
