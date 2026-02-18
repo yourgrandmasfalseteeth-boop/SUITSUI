@@ -1,6 +1,17 @@
 const { useState } = React;
 const { Map, Compass, Radio, Wrench, Activity, MessageSquare, Info, ChevronRight, Bot } = lucide;
 
+// Create icon components
+const MapIcon = (props) => React.createElement(Map, props);
+const CompassIcon = (props) => React.createElement(Compass, props);
+const RadioIcon = (props) => React.createElement(Radio, props);
+const WrenchIcon = (props) => React.createElement(Wrench, props);
+const ActivityIcon = (props) => React.createElement(Activity, props);
+const MessageSquareIcon = (props) => React.createElement(MessageSquare, props);
+const InfoIcon = (props) => React.createElement(Info, props);
+const ChevronRightIcon = (props) => React.createElement(ChevronRight, props);
+const BotIcon = (props) => React.createElement(Bot, props);
+
 const SIRIUSSystem = () => {
   const [currentPage, setCurrentPage] = useState('navigation');
 
@@ -37,36 +48,29 @@ const SIRIUSSystem = () => {
   const Navigation = () => (
     <div className="space-y-6">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Mini Map */}
         <div className="lg:col-span-2 bg-black rounded-lg p-6 border border-purple-500/30">
           <h3 className="text-xl font-semibold text-purple-400 mb-4 flex items-center gap-2">
-            <Map size={24} />
+            <MapIcon size={24} />
             Terrain Map
           </h3>
           <div className="relative bg-gray-950 rounded h-96 border border-gray-700 overflow-hidden">
-            {/* Simulated map with grid */}
             <div className="absolute inset-0" style={{
               backgroundImage: 'linear-gradient(rgba(168, 85, 247, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(168, 85, 247, 0.1) 1px, transparent 1px)',
               backgroundSize: '40px 40px'
             }}></div>
-            
-            {/* Waypoint markers */}
             <div className="absolute top-1/2 left-1/2 w-4 h-4 bg-green-500 rounded-full animate-pulse" title="Base Station"></div>
             <div className="absolute top-1/3 left-2/3 w-3 h-3 bg-blue-500 rounded-full" title="EVA"></div>
             <div className="absolute top-2/5 left-3/5 w-3 h-3 bg-yellow-500 rounded-full" title="PR"></div>
             <div className="absolute top-1/4 left-3/4 w-2 h-2 bg-purple-500 rounded-full" title="POI"></div>
             <div className="absolute top-1/3 left-5/12 w-3 h-3 bg-red-500 rounded-full" title="Hazard"></div>
-            
-            {/* Distance rings */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 border border-purple-500/20 rounded-full"></div>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 border border-purple-500/10 rounded-full"></div>
           </div>
         </div>
 
-        {/* Compass */}
         <div className="bg-black rounded-lg p-6 border border-purple-500/30">
           <h3 className="text-xl font-semibold text-purple-400 mb-4 flex items-center gap-2">
-            <Compass size={24} />
+            <CompassIcon size={24} />
             Direction
           </h3>
           <div className="flex justify-center items-center h-96">
@@ -76,7 +80,6 @@ const SIRIUSSystem = () => {
               <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-gray-600 font-bold">S</div>
               <div className="absolute left-2 top-1/2 -translate-y-1/2 text-gray-600 font-bold">W</div>
               <div className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-600 font-bold">E</div>
-              {/* Compass needle */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-24 bg-gradient-to-b from-red-500 to-gray-500 origin-bottom" style={{transform: 'translate(-50%, -50%) rotate(42deg)'}}></div>
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-purple-500 rounded-full"></div>
               <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-2xl font-bold text-purple-400">042°</div>
@@ -85,7 +88,6 @@ const SIRIUSSystem = () => {
         </div>
       </div>
 
-      {/* Waypoints List */}
       <div className="bg-black rounded-lg p-6 border border-purple-500/30">
         <h3 className="text-xl font-semibold text-purple-400 mb-4">Waypoints</h3>
         <div className="space-y-2">
@@ -117,7 +119,6 @@ const SIRIUSSystem = () => {
 
   const Mission = () => (
     <div className="space-y-6">
-      {/* Task Checklist */}
       <div className="bg-black rounded-lg p-6 border border-purple-500/30">
         <h3 className="text-xl font-semibold text-purple-400 mb-4">Mission Tasks</h3>
         <div className="space-y-3">
@@ -136,7 +137,6 @@ const SIRIUSSystem = () => {
         </div>
       </div>
 
-      {/* AI Summaries */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-black rounded-lg p-6 border border-purple-500/30">
           <div className="flex items-center justify-between mb-4">
@@ -190,10 +190,9 @@ const SIRIUSSystem = () => {
   const Vitals = () => (
     <div className="space-y-6">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* EVA Suit Vitals */}
         <div className="bg-black rounded-lg p-6 border border-purple-500/30">
           <h3 className="text-xl font-semibold text-purple-400 mb-4 flex items-center gap-2">
-            <Activity size={24} />
+            <ActivityIcon size={24} />
             EVA Suit Status
           </h3>
           <div className="space-y-4">
@@ -243,7 +242,6 @@ const SIRIUSSystem = () => {
           </div>
         </div>
 
-        {/* PR Vitals */}
         <div className="bg-black rounded-lg p-6 border border-purple-500/30">
           <h3 className="text-xl font-semibold text-purple-400 mb-4">Pressurized Rover Status</h3>
           <div className="space-y-4">
@@ -299,7 +297,6 @@ const SIRIUSSystem = () => {
   const RoverControls = () => (
     <div className="space-y-6">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Driving Controls */}
         <div className="bg-black rounded-lg p-6 border border-purple-500/30">
           <h3 className="text-xl font-semibold text-purple-400 mb-4">Driving Mode</h3>
           <div className="space-y-3">
@@ -332,7 +329,6 @@ const SIRIUSSystem = () => {
           </div>
         </div>
 
-        {/* Destination Input */}
         <div className="bg-black rounded-lg p-6 border border-purple-500/30">
           <h3 className="text-xl font-semibold text-purple-400 mb-4">Destination Coordinates</h3>
           <div className="space-y-4">
@@ -365,7 +361,6 @@ const SIRIUSSystem = () => {
         </div>
       </div>
 
-      {/* Ingress/Egress Controls */}
       <div className="bg-black rounded-lg p-6 border border-purple-500/30">
         <h3 className="text-xl font-semibold text-purple-400 mb-4">Ingress/Egress Operations</h3>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -392,7 +387,6 @@ const SIRIUSSystem = () => {
 
   const Networking = () => (
     <div className="space-y-6">
-      {/* Connection Status */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="bg-black rounded-lg p-6 border border-purple-500/30">
           <h3 className="text-lg font-semibold text-purple-400 mb-4">EVA ↔ PR Connection</h3>
@@ -447,7 +441,6 @@ const SIRIUSSystem = () => {
         </div>
       </div>
 
-      {/* Connected Devices */}
       <div className="bg-black rounded-lg p-6 border border-purple-500/30">
         <h3 className="text-xl font-semibold text-purple-400 mb-4">Connected Devices</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -473,7 +466,6 @@ const SIRIUSSystem = () => {
         </div>
       </div>
 
-      {/* IP Configuration */}
       <div className="bg-black rounded-lg p-6 border border-purple-500/30">
         <h3 className="text-xl font-semibold text-purple-400 mb-4">Add New Device</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -499,7 +491,7 @@ const SIRIUSSystem = () => {
     <div className="space-y-6">
       <div className="bg-black rounded-lg p-6 border border-purple-500/30">
         <h3 className="text-xl font-semibold text-purple-400 mb-4 flex items-center gap-2">
-          <Bot size={24} />
+          <BotIcon size={24} />
           AI Mission Assistant
         </h3>
         
@@ -510,7 +502,6 @@ const SIRIUSSystem = () => {
           </div>
         </div>
 
-        {/* AI Chat Display */}
         <div className="bg-gray-950 rounded border border-gray-700 h-[350px] overflow-y-auto p-4 space-y-4 mb-4">
           {aiMessages.map(msg => (
             <div key={msg.id} className={`flex ${msg.sender === 'User' ? 'justify-end' : 'justify-start'}`}>
@@ -533,7 +524,6 @@ const SIRIUSSystem = () => {
           ))}
         </div>
 
-        {/* Message Input */}
         <div className="space-y-3">
           <div className="flex gap-3">
             <input 
@@ -546,14 +536,12 @@ const SIRIUSSystem = () => {
             </button>
           </div>
 
-          {/* Voice Input Button */}
           <button className="w-full bg-gray-950 border-2 border-purple-500 text-purple-400 p-3 rounded hover:bg-purple-500/20 transition-colors flex items-center justify-center gap-2">
-            <Radio size={20} />
+            <RadioIcon size={20} />
             <span className="font-semibold">Push to Talk (Voice Input)</span>
           </button>
         </div>
 
-        {/* Quick Questions */}
         <div className="mt-6">
           <div className="text-gray-400 text-sm mb-3">Suggested Questions:</div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -573,7 +561,6 @@ const SIRIUSSystem = () => {
         </div>
       </div>
 
-      {/* AI Capabilities Info */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="bg-black rounded-lg p-4 border border-purple-500/30">
           <h4 className="text-purple-400 font-semibold mb-2 text-sm">Technical Support</h4>
@@ -595,11 +582,10 @@ const SIRIUSSystem = () => {
     <div className="space-y-6">
       <div className="bg-black rounded-lg p-6 border border-purple-500/30">
         <h3 className="text-xl font-semibold text-purple-400 mb-4 flex items-center gap-2">
-          <MessageSquare size={24} />
+          <MessageSquareIcon size={24} />
           EVA ↔ PR Communication
         </h3>
         
-        {/* Messages Display */}
         <div className="bg-gray-950 rounded border border-gray-700 h-96 overflow-y-auto p-4 space-y-3 mb-4">
           {messages.map(msg => (
             <div key={msg.id} className={`flex ${msg.sender === 'EVA' ? 'justify-end' : 'justify-start'}`}>
@@ -622,7 +608,6 @@ const SIRIUSSystem = () => {
           ))}
         </div>
 
-        {/* Message Input */}
         <div className="flex gap-3">
           <input 
             type="text" 
@@ -634,7 +619,6 @@ const SIRIUSSystem = () => {
           </button>
         </div>
 
-        {/* Quick Messages */}
         <div className="mt-4">
           <div className="text-gray-400 text-sm mb-2">Quick Messages:</div>
           <div className="flex flex-wrap gap-2">
@@ -647,7 +631,6 @@ const SIRIUSSystem = () => {
         </div>
       </div>
 
-      {/* Communication Log */}
       <div className="bg-black rounded-lg p-6 border border-purple-500/30">
         <h3 className="text-xl font-semibold text-purple-400 mb-4">Communication Log</h3>
         <div className="bg-gray-950 rounded border border-gray-700 max-h-48 overflow-y-auto">
@@ -670,20 +653,19 @@ const SIRIUSSystem = () => {
   );
 
   const pages = {
-    navigation: { component: Navigation, icon: Map, label: 'Navigation' },
-    mission: { component: Mission, icon: Info, label: 'Mission' },
-    vitals: { component: Vitals, icon: Activity, label: 'Vitals' },
-    rover: { component: RoverControls, icon: Wrench, label: 'Rover Controls' },
-    assistant: { component: MissionAssistant, icon: Bot, label: 'Mission Assistant' },
-    networking: { component: Networking, icon: Radio, label: 'Networking' },
-    messaging: { component: Messaging, icon: MessageSquare, label: 'Messaging' }
+    navigation: { component: Navigation, icon: MapIcon, label: 'Navigation' },
+    mission: { component: Mission, icon: InfoIcon, label: 'Mission' },
+    vitals: { component: Vitals, icon: ActivityIcon, label: 'Vitals' },
+    rover: { component: RoverControls, icon: WrenchIcon, label: 'Rover Controls' },
+    assistant: { component: MissionAssistant, icon: BotIcon, label: 'Mission Assistant' },
+    networking: { component: Networking, icon: RadioIcon, label: 'Networking' },
+    messaging: { component: Messaging, icon: MessageSquareIcon, label: 'Messaging' }
   };
 
   const CurrentPageComponent = pages[currentPage].component;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-950 to-purple-950 text-white">
-      {/* Header */}
       <div className="bg-black/50 border-b border-purple-500/30 backdrop-blur">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
@@ -703,7 +685,6 @@ const SIRIUSSystem = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-8 flex gap-6">
-        {/* Sidebar Navigation */}
         <div className="w-64 flex-shrink-0">
           <div className="bg-black rounded-lg border border-purple-500/30 p-4 sticky top-8">
             <h2 className="text-purple-400 font-semibold mb-4">System Pages</h2>
@@ -722,7 +703,7 @@ const SIRIUSSystem = () => {
                   >
                     <Icon size={20} />
                     <span className="flex-1 text-left">{page.label}</span>
-                    {currentPage === key && <ChevronRight size={16} />}
+                    {currentPage === key && <ChevronRightIcon size={16} />}
                   </button>
                 );
               })}
@@ -730,7 +711,6 @@ const SIRIUSSystem = () => {
           </div>
         </div>
 
-        {/* Main Content */}
         <div className="flex-1">
           <CurrentPageComponent />
         </div>
